@@ -4,12 +4,15 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Utsaha 2015 Event</title>
+    <title>Utsaha 2015 Registration</title>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootst rap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+    <!-- Select2 -->
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0-rc.1/css/select2.min.css" rel="stylesheet" />
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -17,20 +20,27 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    <style>
+     .select2.select2-container.select2-container--default {
+       width: 100% !important;
+       margin-top: 10px;
+     }
+    </style>
   </head>
   <body>
 
     <nav class="navbar navbar-default">
       <div class="container-fluid">
 
-  	<div class="navbar-header sr-only">
+  	<div class="navbar-header">
   	  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-navbar">
   	    <span class="sr-only">Toggle navigation</span>
   	    <span class="icon-bar"></span>
   	    <span class="icon-bar"></span>
   	    <span class="icon-bar"></span>
   	  </button>
-  	  <a class="navbar-brand" href="#">Utsaha 2015 Registrations</a>
+  	  <a class="navbar-brand" href="/">Utsaha 2015 Registrations</a>
   	</div>
 
   	<div class="collapse navbar-collapse" id="main-navbar">
@@ -42,11 +52,11 @@
               <a href="stats.html">Stats</a>
             </li>
   	    <li class="dropdown">
-  	      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Logged in as user@example.com <span class="caret"></span></a>
+  	      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Logged in as <strong><%= current_user.name %></strong> <span class="caret"></span></a>
   	      <ul class="dropdown-menu" role="menu">
-  	        <li><a href="#">Total Due: INR 8000</a></li>
+  	        <li><a href="#">Total Due: INR <%= @total_due %></a></li>
   	        <li class="divider"></li>
-  	        <li><a href="#">Logout</a></li>
+  	        <li><%= link_to "Signout", destroy_user_session_path, method: :delete %></li>
   	      </ul>
   	    </li>
   	  </ul>
@@ -66,7 +76,6 @@
      });
     </script>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
   </body>
 </html>

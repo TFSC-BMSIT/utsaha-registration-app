@@ -4,7 +4,7 @@ class SMSSender
   @@API_key = ENV['SINFINI_API_KEY']
   @@base_uri = "https://alerts.sinfini.com/apiv2/"
 
-  def self.send(mobile_no, message)
+  def self.send_sms(mobile_no, message)
     response = HTTParty.get(@@base_uri,
                  query: {
                    api: "http",

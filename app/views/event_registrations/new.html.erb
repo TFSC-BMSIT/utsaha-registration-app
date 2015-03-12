@@ -1,234 +1,141 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Utsaha 2015 Registration</title>
+<main>
+  <div class="container">
+    <div class="col-lg-6 col-md-6">
 
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+      <%= form_for(@event_registration) do |f| %>
+        <% if @event_registration.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@event_registration.errors.count, "error") %> prohibited this event_registration from being saved:</h2>
 
-    <!-- Select2 -->
-    <link href="http://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0-rc.1/css/select2.min.css" rel="stylesheet" />
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-    <style>
-     .select2.select2-container.select2-container--default {
-       width: 100% !important;
-       margin-top: 10px;
-     }
-    </style>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-    <%= csrf_meta_tags %>
-
-  </head>
-  <body>
-    <nav class="navbar navbar-default">
-      <div class="container-fluid">
-
-  	<div class="navbar-header">
-  	  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-navbar">
-  	    <span class="sr-only">Toggle navigation</span>
-  	    <span class="icon-bar"></span>
-  	    <span class="icon-bar"></span>
-  	    <span class="icon-bar"></span>
-  	  </button>
-  	  <a class="navbar-brand" href="#">Utsaha 2015 Registrations</a>
-  	</div>
-
-  	<div class="collapse navbar-collapse" id="main-navbar">
-  	  <ul class="nav navbar-nav navbar-right">
-            <li>
-              <a href="stats.html">Stats</a>
-            </li>
-  	    <li class="dropdown">
-  	      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Logged in as user@example.com <span class="caret"></span></a>
-  	      <ul class="dropdown-menu" role="menu">
-  	        <li><a href="#">Total Due: INR 8000</a></li>
-  	        <li class="divider"></li>
-  	        <li><a href="#">Logout</a></li>
-  	      </ul>
-  	    </li>
-  	  </ul>
-  	</div>
-      </div>
-    </nav>
-
-    <main>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-
-      <div class="container">
-        <div class="col-lg-6 col-md-6">
-
-          <%= form_for(@event_registration) do |f| %>
-            <% if @event_registration.errors.any? %>
-              <div id="error_explanation">
-                <h2><%= pluralize(@event_registration.errors.count, "error") %> prohibited this event_registration from being saved:</h2>
-
-                <ul>
-                  <% @event_registration.errors.full_messages.each do |message| %>
-                    <li><%= message %></li>
-                  <% end %>
-                </ul>
-              </div>
-            <% end %>
-            <div class="form-group">
-              <%= f.label :name %><br>
-              <%= f.text_field :name, {class: "form-control", placeholder: "Enter name"} %>
-            </div>
-            <div class="form-group">
-              <%= f.label :mobile_number %><br>
-              <%= f.text_field :mobile_no, {class: "form-control", placeholder: "Mobile Number"} %>
-            </div>
-            <div class="form-group">
-              <%= f.label :college_name %><br>
-              <%= f.text_field :college, {class: "form-control", placeholder: "College"} %>
-            </div>
-
-            <div class="form-group" id="select-fields">
-              <h5><b>Events</b></h5>
-            </div>
-
-            <div id="add-event-link">
-              <a href="#" class="btn btn-default">Add An Event</a>
-            </div>
-
-            <br>
-
-            <div id="total-container" class="well">Collect INR 0</div>
-
-            <br>
-            <div class="actions">
-              <%= f.submit "Go", {class: "btn btn-default"} %>
-            </div>
-          <% end %>
-        </div>
-
-        <div class="col-lg-6 col-md-6">
-
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              Recent Registrations
-            </div>
-            <div class="panel-body">
-
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>Name</th>
-                    <th>College</th>
-                    <th>Event</th>
-                    <th>Event Fee</th>
-                  </tr>
-                </thead>
-                <tr>
-                  <td>#</td>
-                  <td>James1</td>
-                  <td>CMS</td>
-                  <td>Treasure Hunt</td>
-                  <td>INR 100</td>
-                </tr>
-                <tr>
-                  <td>#</td>
-                  <td>James1</td>
-                  <td>CMS</td>
-                  <td>Treasure Hunt</td>
-                  <td>INR 100</td>
-                </tr>
-                <tr>
-                  <td>#</td>
-                  <td>James1</td>
-                  <td>CMS</td>
-                  <td>Treasure Hunt</td>
-                  <td>INR 100</td>
-                </tr>
-                <tr>
-                  <td>#</td>
-                  <td>James1</td>
-                  <td>CMS</td>
-                  <td>Treasure Hunt</td>
-                  <td>INR 100</td>
-                </tr>
-                <tr>
-                  <td>#</td>
-                  <td>James1</td>
-                  <td>CMS</td>
-                  <td>Treasure Hunt</td>
-                  <td>INR 100</td>
-                </tr>
-              </table>
-
-            </div>
+            <ul>
+              <% @event_registration.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
           </div>
+        <% end %>
+        <div class="form-group">
+          <%= f.label :name %><br>
+          <%= f.text_field :name, {class: "form-control", placeholder: "Enter name"} %>
+        </div>
+        <div class="form-group">
+          <%= f.label :mobile_number %><br>
+          <%= f.text_field :mobile_no, {class: "form-control", placeholder: "Mobile Number"} %>
+        </div>
+        <div class="form-group">
+          <%= f.label :college_name %><br>
+          <%= f.text_field :college, {class: "form-control", placeholder: "College"} %>
+        </div>
+
+        <div class="form-group" id="select-fields">
+          <h5><b>Events</b></h5>
+        </div>
+
+        <div id="add-event-link">
+          <a href="#" class="btn btn-default">Add An Event</a>
+        </div>
+
+        <br>
+
+        <div id="total-container" class="well">Collect INR 0</div>
+
+        <br>
+        <div class="actions">
+          <%= f.submit "Go", {class: "btn btn-default"} %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="col-lg-6 col-md-6">
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          Recent Registrations
+        </div>
+        <div class="panel-body">
+
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Token</th>
+                <th>Name</th>
+                <th>College</th>
+                <th>Event</th>
+                <th>Amount</th>
+              </tr>
+            </thead>
+            <% @recent_registrations.each do |reg| %>
+              <tr>
+                <td><%= reg.token %></td>
+                <td><%= reg.name %></td>
+                <td><%= reg.college %></td>
+                <td>
+                  <% reg.events.each do |e| %>
+                    <%= e.name %>,
+                  <% end%>
+                </td>
+                <td><%= reg.amount %></td>
+              </tr>
+            <% end %>
+          </table>
 
         </div>
       </div>
-    </main>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0-rc.1/js/select2.min.js"></script>
+    </div>
+  </div>
+</main>
 
-    <script type="text/javascript">
-     var events = [{
-       name: 'None',
-       fee: 0
-     }<% @events.each do |event| %> ,
-       {
-         name: "<%= event.name %>",
-         fee: <%= event.registration_fee %>
-       }
-     <% end %>
-     ];
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0-rc.1/js/select2.min.js"></script>
 
-     var selectNewEvent;
-     var count = 0;
-     var total = 0;
-     var i;
-     var option;
-     var len = events.length;
-     var addEventLink = document.querySelector('#add-event-link');
-     var selectFields = document.querySelector('#select-fields');
-     var totalContainer = document.querySelector('#total-container');
-     selectFields.style.display = "none";
+<script type="text/javascript">
+ var events = [{
+   name: 'None',
+   fee: 0
+ }<% @events.each do |event| %> ,
+ {
+   name: "<%= event.name %>",
+   fee: <%= event.registration_fee %>
+            }
+ <% end %>
+ ];
 
-     $('select')
+ var selectNewEvent;
+ var count = 0;
+ var total = 0;
+ var i;
+ var option;
+ var len = events.length;
+ var addEventLink = document.querySelector('#add-event-link');
+ var selectFields = document.querySelector('#select-fields');
+ var totalContainer = document.querySelector('#total-container');
+ selectFields.style.display = "none";
 
-     addEventLink.addEventListener('click', function(e) {
-       e.preventDefault();
-       selectNewEvent = document.createElement('select');
-       selectNewEvent.className = "form-control";
-       selectNewEvent.name = "events[]";
-       count++;
-       selectFields.appendChild(selectNewEvent);
-       for (i = 0; i < len; i++) {
-         option = document.createElement("option");
-         option.value = events[i].name;
-         option.text = events[i].name + ", INR " + events[i].fee;
-         $(option).data('fee', events[i].fee);
-         selectNewEvent.appendChild(option);
-       }
-       $(selectNewEvent).select2();
-       selectFields.style.display = "block";
-     });
-     $('form').on('change', function () {
-       var total = $('select option:selected').toArray().reduce(function (p, c, v) {
-         return p + $(c).data('fee');
-       }, 0);
-       totalContainer.innerHTML = "Collect INR " + total;
-     });
-    </script>
+ $('select')
 
-  </body>
-</html>
+ addEventLink.addEventListener('click', function(e) {
+   e.preventDefault();
+   selectNewEvent = document.createElement('select');
+   selectNewEvent.className = "form-control";
+   selectNewEvent.name = "events[]";
+   count++;
+   selectFields.appendChild(selectNewEvent);
+   for (i = 0; i < len; i++) {
+     option = document.createElement("option");
+     option.value = events[i].name;
+     option.text = events[i].name + ", INR " + events[i].fee;
+     $(option).data('fee', events[i].fee);
+     selectNewEvent.appendChild(option);
+   }
+   $(selectNewEvent).select2();
+   selectFields.style.display = "block";
+ });
+ $('form').on('change', function () {
+   var total = $('select option:selected').toArray().reduce(function (p, c, v) {
+     return p + $(c).data('fee');
+   }, 0);
+   totalContainer.innerHTML = "Collect INR " + total;
+ });
+</script>

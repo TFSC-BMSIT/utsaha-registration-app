@@ -2,7 +2,8 @@ class EventRegistration < ActiveRecord::Base
   belongs_to :user
   has_and_belongs_to_many :events
 
-  validates :name, :college, :token, :amount, presence: true
+  validates :name, :college, :token, :amount, :events, presence: true
+  validates :token, uniqueness: true
 
   validates_presence_of :user
   validates_associated :user
