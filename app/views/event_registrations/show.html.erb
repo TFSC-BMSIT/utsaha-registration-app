@@ -1,34 +1,41 @@
-<p id="notice"><%= notice %></p>
+<main>
+  <div class="container">
+    <div class="col-lg-offset-3 col-lg-6 col-md-offset-2 col-md-8">
 
-<p>
-  <strong>Name:</strong>
-  <%= @event_registration.name %>
-</p>
+      <h1 class="text-center">Event Registration</h1>
 
-<p>
-  <strong>Mobile no:</strong>
-  <%= @event_registration.mobile_no %>
-</p>
+      <table class="table table-bordered table-condensed">
+        <tr>
+          <td><strong>Name</strong></td>
+          <td><%= @event_registration.name %></td>
+        </tr>
 
-<p>
-  <strong>College:</strong>
-  <%= @event_registration.college %>
-</p>
+        <tr>
+          <td><strong>Mobile no</strong></td>
+          <td><%= @event_registration.mobile_no %></td>
+        </tr>
 
-<p>
-  <strong>Token:</strong>
-  <%= @event_registration.token %>
-</p>
+        <tr>
+          <td><strong>College</strong></td>
+          <td><%= @event_registration.college %></td>
+        </tr>
 
-<p>
-  <strong>Amount:</strong>
-  <%= @event_registration.amount %>
-</p>
+        <tr>
+          <td><strong>Token</strong></td>
+          <td><strong><%= @event_registration.token %></strong></td>
+        </tr>
 
-<p>
-  <strong>User:</strong>
-  <%= @event_registration.user %>
-</p>
+        <tr>
+          <td><strong>Amount</strong></td>
+          <td><strong><%= @event_registration.amount %></strong></td>
+        </tr>
 
-<%= link_to 'Edit', edit_event_registration_path(@event_registration) %> |
-<%= link_to 'Back', event_registrations_path %>
+        <tr>
+          <td><strong>User</strong></td>
+          <td><%= @event_registration.user.name %></td>
+        </tr>
+      </table>
+      <%= link_to 'Back', event_registrations_path %>
+    </div>
+  </div>
+</main>
