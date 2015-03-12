@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @event_registration.name %>
+</p>
+
+<p>
+  <strong>Mobile no:</strong>
+  <%= @event_registration.mobile_no %>
+</p>
+
+<p>
+  <strong>College:</strong>
+  <%= @event_registration.college %>
+</p>
+
+<p>
+  <strong>Token:</strong>
+  <%= @event_registration.token %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @event_registration.amount %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @event_registration.user %>
+</p>
+
+<%= link_to 'Edit', edit_event_registration_path(@event_registration) %> |
+<%= link_to 'Back', event_registrations_path %>
