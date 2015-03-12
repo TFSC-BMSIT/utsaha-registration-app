@@ -24,5 +24,6 @@ module FestReg
     config.active_record.raise_in_transactional_callbacks = true
     config.autoload_paths << Rails.root.join('lib')
     config.assets.initialize_on_precompile = false
+    config.log_level = :debug
   end
 end
