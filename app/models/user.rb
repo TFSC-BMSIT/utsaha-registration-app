@@ -5,4 +5,6 @@ class User < ActiveRecord::Base
          :trackable, :validatable
 
   has_many :event_registrations
+
+  validates :name, :email, presence: true
 end
