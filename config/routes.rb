@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :event_registration
+  resources :event_registrations
 
   devise_for :users
 
