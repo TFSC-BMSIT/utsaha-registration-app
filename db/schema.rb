@@ -11,7 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150312141622) do
+ActiveRecord::Schema.define(version: 20150312143855) do
+
+  create_table "event_registrations", force: :cascade do |t|
+    t.string   "name"
+    t.string   "mobile_no"
+    t.string   "college"
+    t.string   "token"
+    t.decimal  "amount",     precision: 5, scale: 2
+    t.integer  "user_id"
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+  end
+
+  add_index "event_registrations", ["user_id"], name: "index_event_registrations_on_user_id"
+
+  create_table "events", force: :cascade do |t|
+    t.string   "name"
+    t.decimal  "registration_fee"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",               default: "", null: false
