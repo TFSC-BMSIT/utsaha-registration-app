@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
-  get 'event_registrations' => 'event_registration#index'
-  get 'event_registrations/:id' => 'event_registration#show'
-  get 'event_registrations/new' => 'event_registration#new'
-  post 'event_registrations' => 'event_registration#create'
+  resources :event_registration
 
   devise_for :users
 
