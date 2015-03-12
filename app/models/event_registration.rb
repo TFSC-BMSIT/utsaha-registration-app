@@ -4,6 +4,7 @@ class EventRegistration < ActiveRecord::Base
 
   validates :name, :college, :token, :amount, presence: true
 
+  validates_presence_of :user
   validates_associated :user
 
   validates_format_of :mobile_no, with: /\A\d{10}\z/, message: "is of an invalid format. 10 digit mobile number only."
