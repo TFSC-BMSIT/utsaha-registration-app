@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   resources :event_registrations
 
   devise_for :users
+
+  root 'event_registrations#new'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
