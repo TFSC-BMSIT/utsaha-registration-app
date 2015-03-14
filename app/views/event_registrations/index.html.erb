@@ -2,7 +2,7 @@
 
 <h1>Listing Event Registrations</h1>
 
-<table>
+<table class="statistics table">
   <thead>
     <tr>
       <th>Name</th>
@@ -23,10 +23,8 @@
         <td><%= event_registration.college %></td>
         <td><%= event_registration.token %></td>
         <td><%= event_registration.amount %></td>
-        <td><%= event_registration.user %></td>
+        <td><%= event_registration.user.name %></td>
         <td><%= link_to 'Show', event_registration %></td>
-        <td><%= link_to 'Edit', edit_event_registration_path(event_registration) %></td>
-        <td><%= link_to 'Destroy', event_registration, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
