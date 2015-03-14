@@ -14,6 +14,10 @@ class SMSSender
                    message: message
                  }).response
 
+    if response.code != "200"
+      logger.error "Unable to send SMS to #{mobile_no}"
+    end
+
     return (response.code == "200")
   end
 
