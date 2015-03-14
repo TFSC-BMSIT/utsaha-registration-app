@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :event_registrations
+  resources :event_registrations, only: [:index, :show, :new, :create]
 
   devise_for :users, skip: [:registrations]
   as :user do
