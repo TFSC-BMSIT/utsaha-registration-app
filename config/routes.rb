@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
   resources :event_registrations
 
-  devise_for :users
+  devise_for :users, skip: [:registrations]
+  as :user do
+    get 'users/edit' => 'devise/registrations#edit', :as => 'edit_user_registration'
+    put 'users/:id' => 'devise/registrations#update', :as => 'user_registration'
+  end
+
 
   root 'event_registrations#new'
   # The priority is based upon order of creation: first created -> highest priority.

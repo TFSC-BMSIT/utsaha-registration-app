@@ -45,11 +45,14 @@
 
   	<div class="collapse navbar-collapse" id="main-navbar">
   	  <ul class="nav navbar-nav navbar-right">
+	    <li>
+	      <%= link_to "Change your password", edit_user_registration_path %>
+	    </li>
             <li>
               <a href="#" id="print-page">Print</a>
             </li>
             <li>
-              <a href="stats.html">Stats</a>
+	      <%= link_to "Stats", event_registrations_path %>
             </li>
   	    <li class="dropdown">
               <% if not current_user.nil? %>
