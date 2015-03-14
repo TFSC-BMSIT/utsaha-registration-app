@@ -46,6 +46,16 @@ class EventRegistrationsController < ApplicationController
     end
   end
 
+  def stats
+    @user_dues = []
+    @total_collected = 0
+    User.find_each do |u|
+      due = calculate_total_due(u)
+      @user_dues << {name: u.name, due: due}
+      @total_collected += due
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
 

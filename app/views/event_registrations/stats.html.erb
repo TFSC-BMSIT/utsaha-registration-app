@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Dues per User</h1>
+
+<table class="statistics table">
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Total Due</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user_dues.each do |u| %>
+      <tr>
+        <td><%= u.name %></td>
+        <td><%= u.due %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h3>Total Collected: <%= @total_collected %></h3>

@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :event_registrations, only: [:index, :show, :new, :create]
 
+  get 'event_registrations/stats', to: 'event_registrations#stats', as: 'stats'
+
   devise_for :users, skip: [:registrations]
   as :user do
     get 'users/edit' => 'devise/registrations#edit', :as => 'edit_user_registration'
