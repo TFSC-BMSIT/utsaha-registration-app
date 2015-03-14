@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
 
     def calculate_total_due(user)
       sum = 0
-      EventRegistration.where(user: current_user).each do |r|
+      EventRegistration.where(user: user).each do |r|
         sum += r.amount
       end
 
