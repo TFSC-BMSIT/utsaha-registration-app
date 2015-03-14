@@ -45,7 +45,7 @@
 
   	<div class="collapse navbar-collapse" id="main-navbar">
   	  <ul class="nav navbar-nav navbar-right">
-            <% if not current_user.nil? %>
+            <% if user_signed_in? %>
 	    <li>
 	      <%= link_to "Change your password", edit_user_registration_path %>
 	    </li>
@@ -59,16 +59,16 @@
             <li>
               <%= link_to "Stats", event_registrations_stats_path %>
             </li>
-  	    <li class="dropdown">
-              <% if not current_user.nil? %>
-  	      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Logged in as <strong><%= current_user.name %></strong> <span class="caret"></span></a>
-  	      <ul class="dropdown-menu" role="menu">
-  	        <li><a href="#">Total Due: INR <%= @total_due %></a></li>
-  	        <li class="divider"></li>
-  	        <li><%= link_to "Signout", destroy_user_session_path, method: :delete %></li>
-              <% end %>
-  	      </ul>
-  	    </li>
+            <% if user_signed_in? %>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Logged in as <strong><%= current_user.name %></strong> <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="#">Total Due: INR <%= @total_due %></a></li>
+                  <li class="divider"></li>
+                  <li><%= link_to "Signout", destroy_user_session_path, method: :delete %></li>
+                </ul>
+              </li>
+            <% end %>
   	  </ul>
   	</div>
       </div>
@@ -86,6 +86,9 @@
      });
     </script>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0-rc.1/js/select2.min.js"></script>
 
   </body>
 </html>
