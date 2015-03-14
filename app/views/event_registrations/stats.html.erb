@@ -13,11 +13,13 @@
   <tbody>
     <% @user_dues.each do |u| %>
       <tr>
-        <td><%= u.name %></td>
-        <td><%= u.due %></td>
+        <td><%= u[:name] %></td>
+        <td><%= u[:due] %></td>
       </tr>
     <% end %>
+    <tr>
+      <td><h2>Total Collected</h2></td>
+      <td><h2><%= @total_collected %></h2></td>
+    </tr>
   </tbody>
 </table>
-
-<h3>Total Collected: <%= @total_collected %></h3>
