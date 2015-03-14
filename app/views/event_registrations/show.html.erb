@@ -34,6 +34,11 @@
           <td><strong>User</strong></td>
           <td><%= @event_registration.user.name %></td>
         </tr>
+
+        <tr>
+          <td><strong>Time</strong></td>
+          <td><%= @event_registration.created_at.in_time_zone("Kolkata") %></td>
+        </tr>
       </table>
       <%= link_to 'Back', event_registrations_path %>
     </div>
