@@ -54,6 +54,7 @@ class EventRegistrationsController < ApplicationController
       @user_dues << {name: u.name, due: due}
       @total_collected += due
     end
+    @user_dues = @user_dues.sort_by { |u| u[:due]}.reverse
   end
 
   private
