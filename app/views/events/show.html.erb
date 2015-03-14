@@ -1,0 +1,32 @@
+<main>
+  <div class="container">
+    <div class="col-lg-offset-3 col-lg-6 col-md-offset-2 col-md-8">
+
+      <h1 class="text-center"><%= @event.name %> Registrations</h1>
+
+      <table class="table table-bordered table-condensed">
+        <thead>
+          <tr>
+            <th>Token</th>
+            <th>Name</th>
+            <th>Mobile No.</th>
+            <th>College</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <% @event.event_registrations.find_each do |er| %>
+          <tr>
+            <td><%= er.token %></td>
+            <td><%= er.name %></td>
+            <td><%= er.mobile_no %></td>
+            <td><%= er.college %></td>
+          </tr>
+          <% end %>
+
+        </tbody>
+      </table>
+      <%= link_to 'Back', events_path %>
+    </div>
+  </div>
+</main>
