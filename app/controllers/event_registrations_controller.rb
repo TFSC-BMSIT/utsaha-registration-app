@@ -4,7 +4,7 @@ class EventRegistrationsController < ApplicationController
 
   # GET /event_registrations
   def index
-    @event_registrations = EventRegistration.all
+    @event_registrations = EventRegistration.order('created_at DESC')
   end
 
   # GET /event_registrations/1
