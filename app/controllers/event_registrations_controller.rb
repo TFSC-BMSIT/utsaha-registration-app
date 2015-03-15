@@ -14,6 +14,10 @@ class EventRegistrationsController < ApplicationController
 
   # GET /event_registrations/new
   def new
+    if current_user.valid_password? current_user.email
+      flash.now[:alert] = "Please change your password"
+    end
+
     @event_registration = EventRegistration.new
 
     @events = Event.all
@@ -66,7 +70,7 @@ class EventRegistrationsController < ApplicationController
       end
       sum = 0
       params["events"].each do |event_code|
-        next if event_code == "None"
+        next if event_code == "none"
         sum += Event.where(name: event_code).first.registration_fee
       end
 
@@ -79,7 +83,7 @@ class EventRegistrationsController < ApplicationController
       end
       events = []
       params["events"].each do |event_code|
-        next if event_code == "None"
+        next if event_code == "none"
         events << Event.where(name: event_code).first
       end
 
@@ -87,7 +91,7 @@ class EventRegistrationsController < ApplicationController
     end
 
     def sms_message
-      events = @event_registration.events.map(&:name).join(', ')
+      events = @event_registration.events.map(&:pretty_name).join(', ')
       m = "Dear #{@event_registration.name}, your registration of Rs. #{@event_registration.amount} for #{events} at Utsaha 2015 has been confirmed. UniqueToken: #{@event_registration.token}. Please keep this token safely."
 
       if @event_registration.events.any? { |e| e.name.include? "tshirt" }
