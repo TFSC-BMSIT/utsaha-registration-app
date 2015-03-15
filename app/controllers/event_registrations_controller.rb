@@ -95,10 +95,18 @@ class EventRegistrationsController < ApplicationController
       m = "Dear #{@event_registration.name}, your registration of Rs. #{@event_registration.amount} for #{events} at Utsaha 2015 has been confirmed. UniqueToken: #{@event_registration.token}. Please keep this token safely."
 
       if @event_registration.events.any? { |e| e.name.include? "tshirt" }
-        m << "Collect T-Shirts on 18th Noon at the Main Block."
+        m << " Collect T-Shirts on 18th Noon at the Main Block."
       end
 
-      return m
+      # Send only ASCII characters in SMS because Kishan is scared
+      # that it might break their API. :P
+      encoding_options = {
+        :invalid           => :replace,  # Replace invalid byte sequences
+        :undef             => :replace,  # Replace anything not defined in ASCII
+        :replace           => '',        # Use a blank for those replacements
+        :universal_newline => true       # Always break lines with \n
+      }
+      return m.encode(Encoding.find('ASCII'), encoding_options)
     end
 
     # Only allow a trusted parameter "white list" through.
