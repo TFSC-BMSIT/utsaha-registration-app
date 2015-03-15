@@ -70,8 +70,8 @@
                 <td><%= reg.name %></td>
                 <td><%= reg.college %></td>
                 <td>
-                  <% reg.events.each do |e| %>
-                    <%= e.name %>,
+                  <% reg.events.each.with_index do |e, i| %>
+                    <%= " | " unless i == 0 %><%= e.pretty_name %>
                   <% end%>
                 </td>
                 <td><%= reg.amount %></td>
