@@ -88,18 +88,19 @@
 
 <script type="text/javascript">
  var events = [{
-   name: 'None',
+   name: 'none',
+   pretty_name: "None",
    fee: 0
  }<% @events.each do |event| %> ,
  {
    name: "<%= event.name %>",
+   pretty_name: "<%= event.pretty_name %>",
    fee: <%= event.registration_fee %>
             }
  <% end %>
  ];
 
  var selectNewEvent;
- var count = 0;
  var total = 0;
  var i;
  var option;
@@ -109,19 +110,16 @@
  var totalContainer = document.querySelector('#total-container');
  selectFields.style.display = "none";
 
- $('select')
-
  addEventLink.addEventListener('click', function(e) {
    e.preventDefault();
    selectNewEvent = document.createElement('select');
    selectNewEvent.className = "form-control";
    selectNewEvent.name = "events[]";
-   count++;
    selectFields.appendChild(selectNewEvent);
    for (i = 0; i < len; i++) {
      option = document.createElement("option");
      option.value = events[i].name;
-     option.text = events[i].name + ", INR " + events[i].fee;
+     option.text = events[i].pretty_name + ", INR " + events[i].fee;
      $(option).data('fee', events[i].fee);
      selectNewEvent.appendChild(option);
    }
