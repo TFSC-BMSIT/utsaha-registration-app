@@ -14,11 +14,13 @@ class SMSSender
                    message: message
                  }).response
 
-    if response.code != "200"
-      logger.error "Unable to send SMS to #{mobile_no}"
+    if response.body =~ /.*error.*/i
+      Rails.logger.error "Unable to send SMS to #{mobile_no}"
+      return false
+    else
+      Rails.logger.info "Sent SMS to #{mobile_no}"
+      return true
     end
-
-    return (response.code == "200")
   end
 
 end
